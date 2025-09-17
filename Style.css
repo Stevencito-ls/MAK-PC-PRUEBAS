@@ -1,0 +1,1094 @@
+/* ========================================
+    ESTILOS GENERALES DEL SITIO WEB (style.css)
+   ======================================== */
+
+/* Importar Google Fonts - Tipografía empresarial */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /*line-height: 1.6;*/
+    color: #2c3e50;
+    background: rgb(59, 179, 244);
+    overflow-x: hidden;
+}
+
+/* Variables CSS para identidad corporativa */
+:root {
+    --primary-blue: #1e3a8a;
+    --secondary-blue: #3b82f6;
+    --light-blue: #60a5fa;
+    --cyan-color: #0891b2;
+    --yellow-accent: #fbbf24;
+    --dark-yellow: #f59e0b;
+    --white: #ffffff;
+    --light-gray: #f1f5f9;
+    --medium-gray: #64748b;
+    --dark-gray: #334155;
+    --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.15);
+    --border-radius: 8px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-width: 1200px;
+}
+
+/* Header empresarial moderno */
+header {
+    background: rgb(59, 179, 244);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(231, 228, 228, 0.1);
+}
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23ffffff" opacity="0.1"/><circle cx="80" cy="40" r="1.5" fill="%23ffeb3b" opacity="0.2"/><circle cx="60" cy="80" r="1" fill="%23ffffff" opacity="0.15"/></svg>') repeat;
+    animation: float 20s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+/* Animación de entrada del logo */
+@keyframes logoEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.1) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Hover effect para el logo */
+header img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 8px 16px rgba(30, 58, 138, 0.3));
+    cursor: pointer;
+}
+
+/* Animación de pulso sutil (opcional) */
+@keyframes logoPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* Aplicar pulso cada 4 segundos */
+header img {
+    animation: logoEntrance 1.2s ease-out, logoPulse 4s ease-in-out infinite 2s;
+}
+
+.header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header img {
+    
+    max-width: 500px;
+    height: auto;
+    margin: 0 auto 1rem; 
+    display: block;
+    filter: none;
+    box-shadow: none;
+}
+
+header p {
+    text-align: center;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    margin: 0 auto 1.5rem; 
+    color: var(--dark-gray);
+    font-weight: 400;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+header p a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid var(--yellow-accent);
+    padding-bottom: 2px;
+    transition: var(--transition);
+}
+
+
+header p a:hover {
+    color: var(--cyan-color);
+    border-bottom-color: var(--cyan-color);
+}
+
+/* Navegación empresarial limpia */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    background: transparent;
+    border-radius: var(--border-radius);
+    padding: 0.5rem;
+    /*box-shadow: var(--shadow-light);*/
+}
+
+nav ul li {
+    border-left: none !important;
+    background: none; /* quita el fondo gris si no lo quieres */
+    padding: 0;       /* opcional, ajusta márgenes */
+
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    font-size: 1.25rem;
+    padding: 1rem 1.5rem;
+    border-radius: 6px;
+    transition: var(--transition);
+    position: relative;
+    white-space: nowrap;
+}
+
+nav ul li a:hover {
+    background: var(--white);
+    color: var(--cyan-color);
+    transform: translateY(-1px);
+}
+
+nav ul li a.active {
+    background: var(--primary-blue);
+    color: var(--white);
+    box-shadow: var(--shadow-light);
+}
+
+nav ul li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: var(--yellow-accent);
+    border-radius: 2px;
+}
+
+/* Main content con espaciado profesional */
+main {
+    margin-top: 10px;
+    max-width: var(--max-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2rem;
+}
+
+/* Secciones con diseño corporativo */
+section {
+    background: var(--white);
+    margin: 4rem 0;
+    padding: 4rem 3rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    border-top: 4px solid var(--primary-blue);
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--yellow-accent), var(--cyan-color));
+    opacity: 0.1;
+    border-radius: 50%;
+    transform: translate(30px, -30px);
+}
+
+section:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-strong);
+}
+
+/* Títulos empresariales */
+h1, h2 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-blue);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--yellow-accent));
+    border-radius: 2px;
+}
+
+h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-blue);
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* espacio entre el ícono y el texto */
+    
+}
+h3 img {
+    width: 25px;
+    height: auto;
+}
+
+h4 {
+    color: var(--cyan-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Párrafos con mejor legibilidad */
+p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--medium-gray);
+    text-align: justify;
+    align-items: center;
+    gap: 8px; /* espacio entre icono y texto */
+}
+/* SOLO para párrafos con íconos */
+.p-icono {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Enlaces con estilo empresarial */
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--cyan-color);
+}
+
+/* Botones de llamada a la acción */
+.cta-button {
+    display: inline-block;
+    background: var(--yellow-accent);
+    color: var(--primary-blue);
+    padding: 0.8rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: var(--shadow-light);
+}
+
+.cta-button:hover {
+    background: var(--dark-yellow);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    color: var(--white);
+}
+
+/* Imágenes profesionales */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    margin: 1.5rem 0;
+}
+
+/* Listas empresariales */
+ul {
+    margin-bottom: 2rem;
+    padding-left: 0;
+}
+
+ul li {
+    margin-bottom: 1rem;
+    padding: 0.8rem 0 0.8rem 2.5rem;
+    position: relative;
+    background: var(--light-gray);
+    border-left: 3px solid var(--cyan-color);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* imagen arriba, texto abajo */
+    margin: 1rem 0;
+}
+
+ul li::before {
+    content: none;
+    position: absolute;
+    left: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--yellow-accent);
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+/* Sección Tienda con diseño especial */
+#Tienda {
+    background: linear-gradient(135deg, #3aa4c2 0%, #f7f7f7a9 100%);
+    color: var(--white);
+}
+
+#Tienda h2, #Tienda h3 {
+    color: var(--white);
+}
+
+#Tienda p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Horario con estilo empresarial */
+.horario-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+/* Sección de contacto profesional */
+.contacto-info {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f7fa 100%);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--yellow-accent);
+    box-shadow: var(--shadow-light);
+}
+
+.contacto-info h2 {
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+}
+
+.contacto-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+    padding: 0.8rem;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+}
+
+.contacto-info p:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.contacto-info p img {
+    margin: 0 1rem 0 0;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.contacto-info p strong {
+    color: var(--primary-blue);
+    font-weight: 600;
+    min-width: 120px;
+    display: inline-block;
+}
+
+.contacto-info p a {
+    display: flex;
+    align-items: center;
+    color: var(--cyan-color);
+    font-weight: 500;
+}
+
+/* Mapa con marco empresarial */
+.mapa-container {
+    margin-top: 3rem;
+}
+
+iframe {
+    width: 100%;
+    height: 450px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+    border: 4px solid var(--white);
+}
+
+/* Footer empresarial */
+footer {
+    background: var(--primary-blue);
+    color: var(--white);
+    padding: 2rem 0 1rem;
+    margin-top: 0rem;
+    background: rgb(59, 179, 244);
+}
+
+.footer-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    background: rgb(59, 179, 244);
+}
+
+.Footer-Mayor {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    margin-bottom: 0rem;
+    background: rgb(59, 179, 244);
+    padding-bottom: 2rem;
+}
+
+.footer-01 h3.LetraLogo {
+    color: 	#ca9a51;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 700;
+    padding-left: 3rem;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Border de texto */
+}
+
+/*Imagen logo*/
+
+.footer-01 .LogoI img{
+    width: 50px;
+    height: auto;
+    margin: 0; /* Resetea el margen de la imagen para que no interfiera */
+    box-shadow: none; /* Elimina cualquier sombra de la imagen */
+}
+
+.footer-01 p {
+    margin-bottom: 2rem;
+    color: #030918;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    padding-left: 3rem;
+    padding-right: 5rem;
+}
+
+.footer-01 h4 {
+    color: #FFD700;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-02 h4 {
+    color: #ca9a51;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 700;
+    padding-left: 0rem;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
+}
+
+.footer-02 ul {
+    margin: 0;
+    color: #FFD700;
+}
+
+.footer-02 ul li {
+    background: none;
+    border: none;
+    padding: 0.3rem 0;
+    margin: 0;
+    list-style: none;
+}
+
+.footer-02 ul li::before {
+    display: none;
+    color: #FFD700;
+}
+
+.footer-02 ul li a {
+    color: #030918;
+    transition: var(--transition);
+    font-weight: 400;
+}
+
+.footer-02 ul li a:hover {
+    color: #fefefe;
+    padding-left: 0.5rem;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: center;  /* Centra horizontalmente */
+    align-items: center;      /* Centra verticalmente */
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    width: 100%;
+    padding: 0.2% 0;
+    margin-top: 0%;
+    background: rgb(59, 179, 244);
+}
+.footer-bottom p {
+    font-size: 15px;
+    color: #ffffff; /* Opcional: tono más suave */
+    margin: 0;
+}
+
+
+
+/* Responsive Design Empresarial */
+@media (max-width: 968px) {
+    .Footer-Mayor {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    section {
+        padding: 3rem 2rem;
+    }
+    
+    h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 1rem;
+    }
+    
+    header img {
+        max-width: 150px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    
+    nav ul li a {
+        padding: 0.8rem 1rem;
+        text-align: center;
+    }
+    
+    main {
+        margin-top: 320px;
+        padding: 0 1rem;
+    }
+    
+    section {
+        padding: 2rem 1.5rem;
+        margin: 2rem 0;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .contacto-info {
+        padding: 2rem 1.5rem;
+    }
+    
+    .contacto-info p {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .contacto-info p strong {
+        min-width: auto;
+    }
+    
+    iframe {
+        height: 350px;
+    }
+    
+    .footer-container {
+        padding: 0 1rem;
+    }
+    
+}
+
+@media (max-width: 480px) {
+    main {
+        margin-top: 360px;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .contacto-info p {
+        padding: 1rem;
+    }
+    
+    iframe {
+        height: 300px;
+    }
+}
+
+/* Animaciones empresariales suaves */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Scroll suave empresarial */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus states profesionales */
+*:focus {
+    outline: 2px solid var(--yellow-accent);
+    outline-offset: 2px;
+}
+#Convenios ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+}
+
+#Convenios li {
+    text-align: center;
+}
+
+#Convenios li img {
+    height: 100px;   /* fuerza misma altura */
+    width: auto;     /* mantiene proporción */
+    display: block;
+    margin: 0 auto 0.5rem;
+}
+
+#Convenios li a {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+.chevron-section {
+
+    padding: 2rem;
+    background: #f9f9f9;
+    text-align: center;
+
+}
+
+
+
+.chevron-section h2 {
+
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+
+}
+
+
+
+.chevron-section p {
+
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+
+
+.chevron-grid {
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+
+}
+
+
+
+.chevron-card {
+
+    position: relative;
+    width: 280px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+
+
+.chevron-card:hover {
+    transform: translateY(-5px);
+}
+
+
+
+.chevron-card img {
+
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+
+}
+
+
+
+.chevron-card h3 {
+
+    margin: 1rem 0 0.5rem;
+    font-size: 1.1rem;
+    color: #222;
+
+}
+
+
+
+.chevron-card p {
+
+    padding: 0 1rem 1rem;
+    font-size: 0.95rem;
+    color: #666;
+
+}
+
+
+
+/* Chevron effect */
+
+.chevron-card::after {
+
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 40px;
+    height: 40px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: -1;
+
+}
+
+
+/* ========================================
+    ESTILOS DEL MENÚ LATERAL DE REDES SOCIALES (flotantes.css)
+   ======================================== */
+
+/* ========================================
+    MENÚ LATERAL DE REDES SOCIALES - INTEGRADO
+   ======================================== */
+
+
+/* Contenedor principal del menú lateral */
+.lateral-menu-container {
+    position: fixed;
+    top: 90%;
+    left: 3rem;
+    transform: translateY(-50%);
+    z-index: 1050; /* Mayor que el header (1000) */
+}
+
+/* Botón principal que contiene el menú */
+.lateral-main-btn {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--yellow-accent), #fcc827);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-medium);
+    transition: var(--transition);
+    position: relative;
+    z-index: 1051;
+    color:  #fcc827;
+}
+
+.lateral-main-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-strong);
+}
+
+.lateral-main-btn.lateral-active {
+    background: linear-gradient(135deg, var(--yellow-accent), #fcc827);
+    transform: scale(1.05);
+}
+
+/* Icono del botón principal */
+.lateral-menu-icon {
+    color: var(--white);
+    font-size: 20px;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.lateral-main-btn.lateral-active .lateral-menu-icon {
+    transform: rotate(90deg);
+}
+
+/* Contenedor de los botones sociales */
+.lateral-social-buttons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s var(--transition);
+    pointer-events: none;
+}
+
+/* Estado activo del contenedor */
+.lateral-social-buttons.lateral-show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+/* Estilos de los botones individuales */
+.lateral-btn {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border-radius: 50%;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+    transform: translateX(-100px);
+    opacity: 0;
+    position: relative;
+}
+
+/* Estado visible de los botones */
+.lateral-social-buttons.lateral-show .lateral-btn {
+    animation: lateralSlideInLeft 0.5s ease forwards;
+}
+
+/* Hover de los botones */
+.lateral-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Estilo del botón WhatsApp  */
+.lateral-whatsapp {
+    background-color: #25D366 !important;
+    background-image: url('Iconos/whatsapp-estilo-cuadrado.svg');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: -230px; /* Ajuste vertical */
+}
+
+/* Estilo del botón Facebook */
+.lateral-facebook {
+    background-color: #1877F2 !important;
+    background-image: url('Iconos/facebook-versionActual.svg');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 10px;
+}
+
+/* Estilo del botón TikTok */
+.lateral-tiktok {
+    background-color: #333 !important;
+    background-image: url('Iconos/tiktok-SinLetras.svg');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 10px;
+}
+
+
+/* Animación de entrada desde la izquierda - nombre único */
+@keyframes lateralSlideInLeft {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animación de salida hacia la izquierda - nombre único */
+@keyframes lateralSlideOutLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+}
+
+/* Estado de salida de los botones */
+.lateral-social-buttons.lateral-hide .lateral-btn {
+    animation: lateralSlideOutLeft 10s ease forwards;
+}
+
+/* Responsive para el menú lateral - usa las mismas breakpoints */
+@media (max-width: 768px) {
+    .lateral-menu-container {
+        left: 1rem;
+    }
+    
+    .lateral-main-btn,
+    .lateral-btn {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .lateral-menu-icon {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lateral-menu-container {
+        left: 0.5rem;
+    }
+    
+    .lateral-btn {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .lateral-menu-icon {
+        font-size: 14px;
+    }
+}
+
+/* Asegurar que no interfiera con elementos existentes */
+.lateral-menu-container * {
+    box-sizing: border-box;
+}
+.lateral-show {
+    animation: slideInLeft 0.6s forwards;
+}
+
+.lateral-hide {
+    animation: slideOutLeft 0.4s forwards;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
